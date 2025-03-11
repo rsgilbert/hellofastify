@@ -1,10 +1,12 @@
 import Fastify from "fastify";
 import ourFirstRoute from './our-first-route.js'
+import ourDbConnector from "./our-db-connector.js";
 
 const fastify = Fastify({
     logger: true 
 })
 
+fastify.register(ourDbConnector)
 fastify.register(ourFirstRoute)
 
 fastify.get('/hello', function (request, reply) {
